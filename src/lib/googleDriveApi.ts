@@ -177,8 +177,8 @@ export async function serveGoogleDriveImage(req: Request, res: Response) {
 // Express.js middleware for API endpoint
 export function createGoogleDriveMiddleware() {
   return async (req: Request, res: Response) => {
-    // Enable CORS
-    res.setHeader('Access-Control-Allow-Origin', '*');
+    // Enable CORS for localhost:8080
+    res.setHeader('Access-Control-Allow-Origin', 'http://localhost:8080');
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
     res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
 
@@ -222,9 +222,7 @@ export function createGoogleDriveMiddleware() {
 // Vercel/Netlify serverless function handler
 export async function handler(req: Request, res: Response) {
   res.setHeader('Access-Control-Allow-Origin', 'http://localhost:8080');
-  res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
   if (req.method === 'OPTIONS') {
     res.status(200).end();
