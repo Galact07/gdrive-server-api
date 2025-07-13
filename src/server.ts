@@ -4,19 +4,11 @@ import { createGoogleDriveMiddleware, serveGoogleDriveImage } from './lib/google
 
 const app = express();
 
-// Global CORS headers for all responses
-app.use((req, res, next) => {
-  res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
-  if (req.method === 'OPTIONS') {
-    res.sendStatus(200);
-  } else {
-    next();
-  }
-});
-
-app.use(cors());
+// Use CORS middleware to allow requests from localhost:8080
+app.use(cors({
+  origin: 'http://localhost:8080',
+  credentials: true,
+}));
 app.use(express.json());
 
 app.get('/api/health', (req, res) => {
