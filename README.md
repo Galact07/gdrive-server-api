@@ -13,14 +13,22 @@ npm install
 ### 2. Service Account Key
 
 - For **local development**, place your Google service account key JSON at `src/lib/service-account-key.json` (do NOT commit this file).
-- For **Vercel deployment**, add the contents of your service account key JSON as the `GOOGLE_SERVICE_ACCOUNT_KEY` environment variable in the Vercel dashboard.
+- For **Vercel deployment**, add the contents of your service account key JSON as the `GOOGLE_SERVICE_ACCOUNT_KEY` environment variable in the Vercel dashboard:
+  1. Open your `service-account-key.json` file and copy the entire contents (including the `{ ... }`).
+  2. Go to your project on [Vercel Dashboard](https://vercel.com/dashboard).
+  3. Click on your project, then go to **Settings > Environment Variables**.
+  4. Add a new variable:
+     - **Name:** `GOOGLE_SERVICE_ACCOUNT_KEY`
+     - **Value:** Paste the entire JSON content (Vercel supports multiline values).
+     - **Environment:** Select Production (and Preview/Development if needed).
+  5. Save and redeploy your project.
 
 ### 3. Run Locally
 
 ```
 npm run dev
 # or
-node src/server.ts
+node dist/server.js
 ```
 
 ## API Endpoints
@@ -45,7 +53,7 @@ GET /api/gdrive-image/:fileId
 ## Deployment
 
 - Deploy to Vercel. The `vercel.json` is preconfigured for serverless deployment.
-- Set the `GOOGLE_SERVICE_ACCOUNT_KEY` environment variable in Vercel.
+- Set the `GOOGLE_SERVICE_ACCOUNT_KEY` environment variable in Vercel as described above.
 
 ## Security
 
