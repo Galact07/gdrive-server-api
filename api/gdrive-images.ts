@@ -61,8 +61,8 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       mimeType: file.mimeType!,
       size: file.size!,
       createdTime: file.createdTime!,
-      url: `/api/gdrive-image/${file.id}`,
-      thumbnailUrl: `/api/gdrive-image/${file.id}?size=thumbnail`
+      url: `https://gdrive-server-api.vercel.app/api/gdrive-image/${file.id}`,
+      thumbnailUrl: `https://gdrive-server-api.vercel.app/api/gdrive-image/${file.id}?size=thumbnail`
     })) || [];
     res.status(200).json({
       success: true,
