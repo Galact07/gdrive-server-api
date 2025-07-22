@@ -40,7 +40,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   }
   const { folderUrl } = req.query;
   if (!folderUrl || typeof folderUrl !== 'string') {
-    res.status(400).json({ error: 'Folder URL is required', message: 'Please provide a Google Drive folder URL' });
+    res.status(400).json({ error: 'Folder URL is required', message: 'Please provide a Google Drive folder URL!' });
     return;
   }
   const folderId = extractFolderId(folderUrl);
